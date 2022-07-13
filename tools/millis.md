@@ -2,4 +2,9 @@
 title:  "millis tools"
 layout: default
 ---
-<input type="text" id="">
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+<input type="text" id="datepicker">
