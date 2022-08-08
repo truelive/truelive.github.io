@@ -3,3 +3,4 @@ title:  "Usefill tools"
 layout: default
 ---
 - [Time tools]({% link tools/millis.md %})
+- [Link for bio]({% link tools/card.html%})
