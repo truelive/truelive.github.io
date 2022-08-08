@@ -9,6 +9,16 @@ body, html {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+#vanta {
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+ 
 html {
     background: url(/assets/static/bg.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -27,6 +37,7 @@ header{
 }
 
 header > img {
+    z-index: 100;
     width: 6em;
     height: 6em;
     border-radius: 100%;
@@ -58,6 +69,7 @@ ul {
     list-style: none;
     margin: 0 auto;
     padding: 2em;
+    max-width: 480px;
 }
 
 ul > li {
