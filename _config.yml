@@ -30,7 +30,7 @@ twitter_username: sayonemore
 github_username:  truelive
 header_pages:
   - about.markdown
-  - tools/tool_list.md
+  - tools/index.markdown
 # Build settings
 theme: minima
 plugins:
