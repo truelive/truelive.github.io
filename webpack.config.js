@@ -7,7 +7,8 @@ module.exports = {
       // if using GitHub Pages, use the following:
       // path: "assets/javascripts"
       path: __dirname + "/assets/js/",
-      filename: "bundle.js"
+      filename: "bundle.js",
+      library: 'MyLibrary'
     },
     module: {
     rules: [
