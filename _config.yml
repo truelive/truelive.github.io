@@ -17,9 +17,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-destination: public
-source: src
-exclude: ['node_modules']
+exclude: ['node_modules', 'webpack']
 title: truelive's pages
 email: roman@elrobit.com
 description: >- # this means to ignore newlines until "baseurl:"
