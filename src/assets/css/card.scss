@@ -17,6 +17,7 @@ body, html {
     top: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
  
 html {
@@ -36,7 +37,7 @@ header{
     align-items: center;
 }
 
-header > img {
+header img {
     z-index: 100;
     width: 6em;
     height: 6em;
@@ -62,6 +63,16 @@ header > h1,h2 {
     color: grey;
     fill: currentColor;
     display: inline-block;
+}
+
+#player {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+}
+
+#player li {
+    display: inline;
 }
 
 ul {
@@ -93,4 +104,80 @@ ul > li > a {
 a {
     color: black;
     text-decoration: none;
+}
+
+.icon {
+    position: absolute;
+    top: 1em;
+    left: calc(50% - 8em);
+    z-index: 200;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    background-color: #fffa;
+    box-shadow: #1c205d 0px 2px 8px 0px;
+    backdrop-filter: blur(10px) saturate(130%) contrast(180%);
+    border-radius: 10em;
+    padding: 1em;
+    text-align: center;
+}
+
+.icon > .elem {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 2px;
+    width: 3px;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+}
+
+.elem::after, .elem::before {
+    content: '';
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+}
+.elem::after {
+    top: -1.5em;
+    left: -0.3em;
+    transform: rotate(45deg);
+}
+  
+.elem::before {
+    top: -0.25em;
+    left: 0.3em;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    transform: rotate(-45deg);
+}
+
+
+.slide-in {
+    animation: slide-in 0.5s forwards;
+    -webkit-animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+    animation: slide-out 0.5s forwards;
+    -webkit-animation: slide-out 0.5s forwards;
+}
+    
+@keyframes slide-in {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateY(0%); }
+}
+    
+@keyframes slide-out {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-100%); }
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateY(0%); }
+    100% { -webkit-transform: translateY(-100%); }
 }
