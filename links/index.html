@@ -8,25 +8,62 @@
         <script type="text/javascript" src="/assets/js/bundle.js" charset="utf-8"></script>
         <script>
             window.addEventListener('DOMContentLoaded', () => {
-                
-                document.querySelector('.icon').addEventListener("click", function(event){
-                    var $slider = document.getElementById('slider');
-                    var $player = document.getElementById('player');
-                    console.log($slider);
-                    var isOpen = $slider.classList.contains('slide-in');
-                    console.log(isOpen);
-                    $slider.setAttribute('class', isOpen ? 'slide-out' : 'slide-in');
-                    $player.setAttribute('class', isOpen ? 'slide-in' : 'slide-out');
-                    
-                });
+                const scenes = [1, 2, 3]; // load scenes
+                //create picker
+                //create scene
                 MyLibrary.vanta(document.getElementById('vanta'))
+                document.querySelector('.icon').addEventListener("click", function(event){
+                    $("#slider").toggleClass("slide-out slide-in")
+                    $("#player").toggleClass("slide-out slide-in")
+                    $("#curtainPull").toggleClass("rotate-down rotate-up")
+                });
+                $('#sceneLeft').click(function(){
+                    var ch = $('input[name="scene"]:checked');
+                    var num = parseInt(ch.prop("value"));
+                    if(num>1) {
+                        num--;
+                        ch.prop("checked", false);
+                        $('input[name="scene"][value='+num+']').prop("checked", true);
+                        $('input[name="scene"][value='+num+']').trigger("change");
+                    }
+                });
+                $('#sceneRight').click(function(){
+                    var ch = $('input[name="scene"]:checked');
+                    var num = parseInt(ch.prop("value"));
+                    if(num<$('input[name="scene"]').length) {
+                        num++;
+                        ch.prop("checked", false);
+                        $('input[name="scene"][value='+num+']').prop("checked", true);
+                        $('input[name="scene"][value='+num+']').trigger("change");
+                    }
+                });
+                var container = $('#sceneHolder');
+                scenes.forEach(element => {
+                    container.append(
+                        $('<input>').prop({
+                            type: 'radio',
+                            id: 'scene'+element,
+                            name: 'scene',
+                            value: element,
+                            checked: Math.floor(Math.random() * scenes.length) == element ? true : false
+                        })
+                    )
+                });
+
+
+                $('input[name="scene"]').change(function() {
+                    if(this.checked) {
+                        console.log("THID"+this.value)
+                    }
+                });
+
             })
             </script>
     </head>
     <main>
         <body>
             <div id="vanta"></div>
-            <div class="icon">
+            <div class="icon rotate-up" id="curtainPull">
                 <div class="elem"></div>
             </div>
             <div id="slider" class="slide-in">
@@ -68,12 +105,10 @@
                 
             </div>
             <div id="player" class="slide-out">
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                </ul>
+                <div class="icon" id="sceneLeft"><div class="elem"></div> </div>
+                <div id="sceneHolder">
+                </div>
+                <div class="icon" id="sceneRight"><div class="elem"></div></div>
             </div>
         </body>
     </main>
