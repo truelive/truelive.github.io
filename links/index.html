@@ -8,10 +8,10 @@
         <script type="text/javascript" src="/assets/js/bundle.js" charset="utf-8"></script>
         <script>
             window.addEventListener('DOMContentLoaded', () => {
-                const scenes = [1, 2, 3]; // load scenes
+                const scenes = MyLibrary.three_scenes; // load scenes
                 //create picker
                 //create scene
-                MyLibrary.vanta(document.getElementById('vanta'))
+                MyLibrary.three_scenes[1].draw(document.getElementById('vanta'))
                 document.querySelector('.icon').addEventListener("click", function(event){
                     $("#slider").toggleClass("slide-out slide-in")
                     $("#player").toggleClass("slide-out slide-in")
@@ -20,7 +20,7 @@
                 $('#sceneLeft').click(function(){
                     var ch = $('input[name="scene"]:checked');
                     var num = parseInt(ch.prop("value"));
-                    if(num>1) {
+                    if(num>0) {
                         num--;
                         ch.prop("checked", false);
                         $('input[name="scene"][value='+num+']').prop("checked", true);
@@ -30,7 +30,7 @@
                 $('#sceneRight').click(function(){
                     var ch = $('input[name="scene"]:checked');
                     var num = parseInt(ch.prop("value"));
-                    if(num<$('input[name="scene"]').length) {
+                    if(num<$('input[name="scene"]').length-1) {
                         num++;
                         ch.prop("checked", false);
                         $('input[name="scene"][value='+num+']').prop("checked", true);
@@ -38,22 +38,22 @@
                     }
                 });
                 var container = $('#sceneHolder');
-                scenes.forEach(element => {
+                scenes.forEach((element,i) => {
                     container.append(
                         $('<input>').prop({
                             type: 'radio',
-                            id: 'scene'+element,
+                            id: 'scene'+i,
                             name: 'scene',
-                            value: element,
-                            checked: Math.floor(Math.random() * scenes.length) == element ? true : false
+                            value: i,
+                            checked: Math.floor(Math.random() * (scenes.length-1)) == i ? true : false
                         })
                     )
                 });
 
-
                 $('input[name="scene"]').change(function() {
                     if(this.checked) {
                         console.log("THID"+this.value)
+                        MyLibrary.three_scenes[this.value].draw(document.getElementById('vanta'))
                     }
                 });
 
